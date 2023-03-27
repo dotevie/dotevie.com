@@ -2,3 +2,8 @@ body {
     padding: 15px;
     background-image: url('bg.gif');
 }
+
+#wobble {
+    font-size: large;
+    font-weight: bold;
+}
