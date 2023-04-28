@@ -4,6 +4,21 @@ body {
 }
 
 #wobble {
-    font-size: large;
+    font-size: 20pt;
     font-weight: bold;
+}
+p {
+    font-size: 16pt;
+}
+
+li {
+    font-size: 16pt;
+}
+
+a {
+    color: #555;
+}
+
+a:visited {
+    color: #777;
 }

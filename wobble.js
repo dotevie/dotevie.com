@@ -1,5 +1,5 @@
             // <![CDATA[
-                var speed=100; // speed of wobbling, lower is faster
+                var speed=60; // speed of wobbling, lower is faster
                 var height=1; // height of wobbling in pixels
                 var alink="http://www.mf2fm.com/rv"; // page to link text to (set to ="" for no link)
                 
