@@ -22,3 +22,14 @@ a {
 a:visited {
     color: #777;
 }
+
+#haxe-output {
+    width: 50%;
+    height: auto;
+    min-height: 100px;
+    border: 1px solid #000;
+}
+
+textarea {
+    resize: none;
+}

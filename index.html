@@ -7,6 +7,21 @@
         <meta name="viewport" width="100%">
         <script src="wobble.js"></script>
         <link rel="stylesheet" href="global.css" type="text/css" />
+        <script type="module">
+            import { runHaxeCode } from "./hscript-custom.js";
+            const form = document.getElementById("haxe-form");
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                onSubmitForm();
+            });
+            // function to run when form is submitted
+            function onSubmitForm() {
+                // get the haxe code from the input box
+                const haxeCode = document.getElementById("haxe-input").value;
+                // run the haxe code and get the output
+                const haxeOutput = runHaxeCode(haxeCode);
+            }
+        </script>
     </head>
     <body>
         <h1>my website!!!!!!!!!!</h1>
@@ -48,5 +63,17 @@
         <img src="badges/kris_where_tf_are_we.png" width="88" height="31" alt="Button with Susie and Kris from Deltarune, Susie saying 'kris where tf are we'"/>
         <img src="badges/ralseismokingadart.gif" width="88" height="31" alt="Animated button of Ralsei from deltarune smoking marijuana"/>
 
+        <hr />
+        <div id="wobble">experimental: haxe in browser!</div>
+        <p>type some haxe into the box below, then click submit to execute it!</p>
+        <!-- basic form with one box and submit button that calls onSubmitForm() -->
+        <form id="haxe-form">
+            <textarea id="haxe-input" spellcheck="false" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' cols="80"></textarea>
+            <br />
+            <input type="submit" value="Submit" />
+        </form>
+        <br/>
+        <!-- div to display output -->
+        <div id="haxe-output"></div>
     </body>
 </html>
