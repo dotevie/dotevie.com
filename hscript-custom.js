@@ -16,7 +16,7 @@ interp.variables.set("alert", alert);
 interp.variables.set("confirm", confirm);
 interp.variables.set("prompt", prompt);
 interp.variables.set("XMLHttpRequest", XMLHttpRequest);
-interp.variables.set("trace", (v, infos) => {
+interp.variables.set("trace", (v) => {
     if (document.getElementById("haxe-output").innerHTML.split("<br>").length > 30) {
         document.getElementById("haxe-output").innerHTML = "";
     }
@@ -24,6 +24,21 @@ interp.variables.set("trace", (v, infos) => {
     console.log(thing);
     const node = document.getElementById("haxe-output");
     node.innerHTML += thing + "<br>";
+});
+interp.variables.set("script", interp);
+interp.variables.set("setInContext", (k, v) => interp.setVar(k, v));
+interp.variables.set("Browser", {
+    console: console,
+    document: document,
+    location: location,
+    navigator: navigator,
+    self: self,
+    supported: true,
+    window: window,
+    alert: alert,
+    createXMLHttpRequest: () => new XMLHttpRequest(),
+    getLocalStorage: () => localStorage,
+    getSessionStorage: () => sessionStorage,
 });
 
 const runHaxeCode = (code) => {
