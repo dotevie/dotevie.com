@@ -1,7 +1,6 @@
             // <![CDATA[
-                var speed=60; // speed of wobbling, lower is faster
+                var speed=20; // speed of wobbling, lower is faster
                 var height=1; // height of wobbling in pixels
-                var alink="http://www.mf2fm.com/rv"; // page to link text to (set to ="" for no link)
                 
                 /****************************
                 *    Wobbly Text Effect     *
@@ -20,10 +19,6 @@
                     wobli.setAttribute("id", "wobb"+i);
                     wobli.style.position="relative";
                     wobli.appendChild(document.createTextNode(wobtxt.charAt(i)));
-                    if (alink) {
-                      wobli.style.cursor="pointer";
-                      wobli.onclick=function() { top.location.href=alink; }
-                    }
                     wobble.appendChild(wobli);
                   }
                   setInterval("wobbler()", speed);
