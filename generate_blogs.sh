@@ -1,2 +1,3 @@
+#!/bin/sh
 cd blogs
-haxe --run Generate.hx > /dev/null
+haxe --library markdown --run Generate.hx > /dev/null

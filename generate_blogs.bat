@@ -1,3 +1,3 @@
 @echo off 
 cd blogs
-haxe --run Generate.hx
+haxe --library markdown --run Generate.hx

@@ -2,24 +2,23 @@
 <html>
     <head>
         <link rel="stylesheet" href="../global.css" type="text/css" />
-        <script src="https://unpkg.com/showdown/dist/showdown.min.js"></script>
+        <meta name="description" content="Website for sayofthelor">
+        <meta name="author" content="sayofthelor">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="../wobble.js"></script>
-        <script>
-            async function loadFile(path) {
-                const converter = new showdown.Converter();
-                let response = await fetch(path);
-                let text = await response.text();
-                text = text.replace("<wobble>", "<div id=\"wobble\">").replace("</wobble>", "</div>");
-                let html = converter.makeHtml(text);
-                console.log(html);
-                let div = document.getElementById("content");
-                console.log(div);
-                div.insertAdjacentHTML("beforeend", html);
-            }
-            loadFile("./test.md");
-        </script>
     </head>
     <body>
-        <div id="content"></div>
+        <style>
+    #wobble {
+        font-size: xx-large;
+        font-weight: bold;
+    }
+</style>
+<title>test blog post</title>
+<h1>markdown test</h1>
+<h2>test2</h2>
+<h3>test3</h3><div align="center"><div id="wobble">hey!!!!!!!!</div></div>
+<h2>here's an image!</h2><img src="../under_construction.gif" />
+<h1>i slayed!</h1>
     </body>
 </html>
