@@ -4,6 +4,9 @@ const converter = new showdown.Converter();
 const fs = require("node:fs");
 const path = require('path');
 
+// Bad JavaScript Practices: The File
+// you can take this if you want but idk how useful it's gonna be lol
+
 (function() {
     const htmlTemplate = `<!DOCTYPE html>
 <html>
