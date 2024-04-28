@@ -1,0 +1,56 @@
+const toTitleCase = require("titlecase");
+const showdown = require("showdown");
+const converter = new showdown.Converter();
+const fs = require("node:fs");
+const path = require('path');
+
+(function() {
+    const htmlTemplate = `<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../global.css" type="text/css" />
+        <meta name="description" content="Website for sayofthelor">
+        <meta name="author" content="sayofthelor">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="../wobble.js"></script>
+    </head>
+    <body>
+        {{SLOT}}
+    </body>
+</html>`;
+    const htmlTemplate2 =  `<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="../global.css" type="text/css" />
+        <meta name="description" content="Website for sayofthelor">
+        <meta name="author" content="sayofthelor">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    </head>
+    <body>
+        <h1>blogs!!!</h1>
+        <hr />
+        <ul>{{SLOT}}
+        </ul>
+    </body>
+</html>`;
+    let add = "";
+    const files = fs.readdirSync("blogs");
+    for (const file of files) {
+        if (file.endsWith("md")) {
+            console.log("parsing " + file + "...");
+            const pth = path.parse(file).name;
+            add += `\n      <li><a href="${pth+".html"}"></a>${toTitleCase(pth.replace("-", " "))}</li>`;
+            const html = fs.readFileSync("blogs/"+file, 'utf-8');
+            const md = converter.makeHtml(html);
+            fs.writeFileSync("blogs/"+pth+".html", htmlTemplate.replace("{{SLOT}}", md
+            .replace("<wobble>", "<div id=\"wobble\">")
+            .replace("</wobble>", "</div>")
+            .replace("<center>", "<div align=\"center\">")
+            .replace("</center>", "</div>")
+            ));
+        }
+    }
+    console.log("writing index.html...");
+    fs.writeFileSync("blogs/index.html", htmlTemplate2.replace("{{SLOT}}", add));
+    console.log("done :3")
+})();

@@ -1,0 +1,12 @@
+{
+  "name": "blogs_generator",
+  "version": "1.0.0",
+  "description": ":3",
+  "main": "generate_blogs.cjs",
+  "author": "sayofthelor",
+  "license": "GPL-3.0-only",
+  "dependencies": {
+    "showdown": "^2.1.0",
+    "titlecase": "^1.1.3"
+  }
+}
