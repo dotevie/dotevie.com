@@ -43,9 +43,9 @@ const path = require('path');
             console.log("parsing " + file + "...");
             const pth = path.parse(file).name;
             add += `\n      <li><a href="${pth+".html"}"></a>${toTitleCase(pth.replace("-", " "))}</li>`;
-            const html = fs.readFileSync("blogs/"+file, 'utf-8');
-            const md = converter.makeHtml(html);
-            fs.writeFileSync("blogs/"+pth+".html", htmlTemplate.replace("{{SLOT}}", md
+            const md = fs.readFileSync("blogs/"+file, 'utf-8');
+            const html = converter.makeHtml(md);
+            fs.writeFileSync("blogs/"+pth+".html", htmlTemplate.replace("{{SLOT}}", html
             .replace("<wobble>", "<div id=\"wobble\">")
             .replace("</wobble>", "</div>")
             .replace("<center>", "<div align=\"center\">")
