@@ -42,7 +42,7 @@ const path = require('path');
         if (file.endsWith("md")) {
             console.log("parsing " + file + "...");
             const pth = path.parse(file).name;
-            add += `\n      <li><a href="${pth+".html"}">${toTitleCase(pth.replace("-", " "))}</a></li>`;
+            add += `\n\t\t\t<li><a href="${pth+".html"}">${toTitleCase(pth.replace("-", " "))}</a></li>`;
             const md = fs.readFileSync("blogs/"+file, 'utf-8');
             const html = converter.makeHtml(md);
             fs.writeFileSync("blogs/"+pth+".html", htmlTemplate.replace("{{SLOT}}", html
@@ -50,6 +50,8 @@ const path = require('path');
             .replace("</wobble>", "</div>")
             .replace("<center>", "<div align=\"center\">")
             .replace("</center>", "</div>")
+            .split("\n")
+            .join("\n\t\t")
             ));
         }
     }
