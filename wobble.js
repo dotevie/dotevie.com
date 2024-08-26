@@ -1,5 +1,5 @@
             // <![CDATA[
-                var speed=60; // speed of wobbling, lower is faster
+                var speed=16.6666666; // speed of wobbling, lower is faster
                 var height=1; // height of wobbling in pixels
                 
                 /****************************
@@ -25,7 +25,7 @@
                 }}
                 
                 function wobbler() {
-                  for (var i=0; i<wobtxt.length; i++) document.getElementById("wobb"+i).style.top=Math.round(height*Math.sin(i+wobcnt))+"px"
+                  for (var i=0; i<wobtxt.length; i++) document.getElementById("wobb"+i).style.top=Math.round(height*Math.sin(i+(wobcnt * speed / 60)))+"px"
                   wobcnt++;
                 }
                 // ]]>

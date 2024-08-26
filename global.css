@@ -34,3 +34,34 @@ a:visited {
 textarea {
     resize: none;
 }
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#navbar li {
+    display: inline;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#navbar li a {
+    display:inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* yay consistency */
+a:visited { 
+    color:blue;
+}
+
+.date {
+    margin:0;
+    font-size: medium;
+    font-weight: bold;
+    align-self: flex-end;
+}
