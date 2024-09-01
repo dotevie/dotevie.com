@@ -44,25 +44,21 @@ const path = require('path');
     </body>
 </html>`;
     let add = "";
-    const files = fs.readFileSync("blogs/source/order.meta", 'utf-8').split("\n");
+    const files = fs.readFileSync("blogs/source/_order.meta", 'utf-8').split("\n");
     for (const file of files) {
         if (file.endsWith("md")) {
             console.log(`parsing ${file}...`);
             const pth = path.parse(file).name;
             let name = "";
-            if (fs.existsSync(`blogs/source/${pth}.title`)) {
-                name = fs.readFileSync(`blogs/source/${pth}.title`, 'utf-8');
-                console.log(`title file found for ${file}, usng name "${name}"`);
+            let date = null;
+            if (fs.existsSync(`blogs/source/${pth}.meta`)) {
+                const meta = fs.readFileSync(`blogs/source/${pth}.meta`, 'utf-8').split("\n");
+                name = meta[0];
+                date = meta[1];
+                console.log(`meta file found for ${file}, usng name "${name}" and date "${date}"`);
             } else {
                 name = toTitleCase(pth.replace("-", " "));
                 console.log(`no title file found for ${file}, using auto name "${name}"`);
-            }
-            let date = null;
-            if (fs.existsSync(`blogs/source/${pth}.date`)) {
-                date = fs.readFileSync(`blogs/source/${pth}.date`, 'utf-8');
-                console.log(`date file found for ${file}, usng date "${date}"`);
-            } else {
-                console.log(`no date file found for ${file}`);
             }
             add += `\n\t\t\t<li><div style="display: flex; justify-content: space-between; padding:0;"><a href="${pth+".html"}">${name}</a>${date ?`<p style="padding-right: 40px; font-weight: normal; align-self: center; margin: 0; font-size: medium;">${date}</p>` : ""}</div></li>`;
             const md = fs.readFileSync(`blogs/source/${file}`, 'utf-8');
