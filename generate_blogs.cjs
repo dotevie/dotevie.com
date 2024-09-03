@@ -10,6 +10,7 @@ const path = require('path');
     const htmlTemplate = `<!DOCTYPE html>
 <html>
     <head>
+        <title>{{TITLE}} - sayofthelor.us</title>
         <link rel="stylesheet" href="../global.css" type="text/css" />
         <meta name="description" content="Website for sayofthelor">
         <meta name="author" content="sayofthelor">
@@ -27,6 +28,7 @@ const path = require('path');
     const htmlTemplate2 =  `<!DOCTYPE html>
 <html>
     <head>
+        <title>blog posts - sayofthelor.us</title>
         <link rel="stylesheet" href="../global.css" type="text/css" />
         <meta name="description" content="Website for sayofthelor">
         <meta name="author" content="sayofthelor">
@@ -63,7 +65,7 @@ const path = require('path');
             add += `\n\t\t\t<li><div style="display: flex; justify-content: space-between; padding:0;"><a href="${pth+".html"}">${name}</a>${date ?`<p style="padding-right: 40px; font-weight: normal; align-self: center; margin: 0; font-size: medium;">${date}</p>` : ""}</div></li>`;
             const md = fs.readFileSync(`blogs/source/${file}`, 'utf-8');
             const html = converter.makeHtml(md);
-            fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{SLOT}}", 
+            fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name).replace("{{SLOT}}", 
             `<div style="display: flex; justify-content: space-between; padding:0; height:72px;">
             <h1>${name}</h1>`
             + (date ? `    <p class="date">${date}</p>` : "")
