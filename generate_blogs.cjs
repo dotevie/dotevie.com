@@ -47,6 +47,9 @@ const path = require('path');
 </html>`;
     let add = "";
     const files = fs.readFileSync("blogs/source/_order.meta", 'utf-8').split("\n");
+    for (let i = 0; i < files.length; i++) {
+        files[i] = files[i].split("\r")[0]; // fix for windows
+    }
     for (const file of files) {
         if (file.endsWith("md")) {
             console.log(`parsing ${file}...`);
@@ -55,7 +58,7 @@ const path = require('path');
             let date = null;
             if (fs.existsSync(`blogs/source/${pth}.meta`)) {
                 const meta = fs.readFileSync(`blogs/source/${pth}.meta`, 'utf-8').split("\n");
-                name = meta[0];
+                name = meta[0].split("\r")[0]; // fix for windows
                 date = meta[1];
                 console.log(`meta file found for ${file}, usng name "${name}" and date "${date}"`);
             } else {
@@ -66,7 +69,7 @@ const path = require('path');
             const md = fs.readFileSync(`blogs/source/${file}`, 'utf-8');
             const html = converter.makeHtml(md);
             fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name).replace("{{SLOT}}", 
-            `<div style="display: flex; justify-content: space-between; padding:0; height:72px;">
+            `<div style="display: flex; justify-content: space-between; padding:0;">
             <h1>${name}</h1>`
             + (date ? `    <p class="date">${date}</p>` : "")
             + "\t\t</div><hr />"
