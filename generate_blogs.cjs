@@ -20,9 +20,12 @@ const path = require('path');
     <body>
         <ul id="navbar">
             <li><a href="/index.html">home</a></li>
-            <li><a href="/blogs/index.html">(new) blog</a></li>
+            <li><a href="/blogs/index.html">blog</a></li>
         </ul>
+        {{HEADER}}
+        <article>
         {{SLOT}}
+        </article>
     </body>
 </html>`;
     const htmlTemplate2 =  `<!DOCTYPE html>
@@ -37,7 +40,7 @@ const path = require('path');
     <body>
         <ul id="navbar">
             <li><a href="/index.html">home</a></li>
-            <li><a href="/blogs/index.html">(new) blog</a></li>
+            <li><a href="/blogs/index.html">blog</a></li>
         </ul>
         <h1>blog posts</h1>
         <hr />
@@ -65,19 +68,19 @@ const path = require('path');
                 name = toTitleCase(pth.replace("-", " "));
                 console.log(`no title file found for ${file}, using auto name "${name}"`);
             }
-            add += `\n\t\t\t<li><div style="display: flex; justify-content: space-between; padding:0;"><a href="${pth+".html"}">${name}</a>${date ?`<p style="padding-right: 40px; font-weight: normal; align-self: center; margin: 0; font-size: medium;">${date}</p>` : ""}</div></li>`;
+            add += `\n\t\t\t<li><div style="display: flex; justify-content: space-between; padding:0;"><a href="${pth+".html"}">${name}</a>${date ?`<p style="padding-right: 40px; font-weight: normal; align-self: right; margin: 0; font-size: medium; text-align: right;">${date}</p>` : ""}</div></li>`;
             const md = fs.readFileSync(`blogs/source/${file}`, 'utf-8');
             const html = converter.makeHtml(md);
-            fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name).replace("{{SLOT}}", 
-            `<div style="display: flex; justify-content: space-between; padding:0;">
+            fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name)
+            .replace("{{HEADER}}",`<div style="display: flex; justify-content: space-between; padding:0;">
             <h1>${name}</h1>`
             + (date ? `    <p class="date">${date}</p>` : "")
-            + "\t\t</div><hr />"
-            + html
-            .replace("<wobble>", "<div id=\"wobble\">")
-            .replace("</wobble>", "</div>")
-            .replace("<center>", "<div align=\"center\">") // idk if this is the best way to center a div but it's ok for what i'm doing
-            .replace("</center>", "</div>")
+            + "\t\t</div><hr />")
+            .replace("{{SLOT}}", 
+                html.replace("<wobble>", "<div id=\"wobble\">")
+                .replace("</wobble>", "</div>")
+                .replace("<center>", "<div align=\"center\">") // idk if this is the best way to center a div but it's ok for what i'm doing
+                .replace("</center>", "</div>")
             .split("\n")
             .join("\n\t\t")
             ));

@@ -48,6 +48,11 @@ textarea {
     white-space: nowrap;
 }
 
+#navbar li + li::before {
+    content: " | ";
+
+}
+
 #navbar li a {
     display:inline-block;
     padding-left: 10px;
@@ -55,7 +60,7 @@ textarea {
 }
 
 /* yay consistency */
-a:visited { 
+a, a:visited { 
     color:blue;
 }
 
@@ -64,4 +69,11 @@ a:visited {
     font-size: medium;
     font-weight: bold;
     align-self: flex-end;
+    text-align: right;
+}
+
+article {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
 }
