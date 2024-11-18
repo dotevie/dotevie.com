@@ -16,21 +16,6 @@ li {
     padding: 10px 0;
 }
 
-/* a {
-    color: #ff3333;
-}
-
-a:visited {
-    color: #ff6666;
-} */
-
-#haxe-output {
-    width: 50%;
-    height: auto;
-    min-height: 100px;
-    border: 1px solid #000;
-}
-
 textarea {
     resize: none;
 }
@@ -79,7 +64,8 @@ article {
 }
 
 img {
-    max-width: 750px;
+    max-width: 100%;
+    width: 100%;
     margin-left: auto;
     margin-right: auto;
 }
