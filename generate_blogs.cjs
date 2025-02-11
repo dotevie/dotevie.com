@@ -104,7 +104,7 @@ function manualDateParse(date) {
         add += `\n\t\t\t<li><div style="display: flex; justify-content: space-between; padding:0;"><a href="${pth+".html"}">${name}</a>${date ?`<p style="padding-right: 40px; font-weight: normal; align-self: right; margin: 0; font-size: medium; text-align: right;">${date}</p>` : ""}</div></li>`;
         const md = fs.readFileSync(`blogs/source/${file}`, 'utf-8');
         const html = converter.makeHtml(md);
-        fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name)
+        fs.writeFileSync(`blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", name.replace(/<\/?[^>]+(>|$)/g, "")) // strip tags
         .replace("{{HEADER}}",`<div style="display: flex; justify-content: space-between; padding:0;">
         <h1>${name}</h1>`
         + (date ? `    <p class="date">${date}</p>` : "")
