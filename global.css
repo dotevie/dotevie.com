@@ -1,7 +1,13 @@
+:root {
+    color-scheme: light dark;
+}
+
 body {
     padding: 15px;
-    background-color: #d8beff;
     background-image: url("bg.svg");
+    background-color: light-dark(#d8beff, #1f1f1f);
+    color: light-dark(#000, #eee);
+    transition: color 0.25s, background-color 0.25s;
 }
 
 #wobble {
@@ -47,7 +53,7 @@ textarea {
 
 /* yay consistency */
 a, a:visited { 
-    color:blue;
+    color: light-dark(blue, #6666ff);
 }
 
 .date {
