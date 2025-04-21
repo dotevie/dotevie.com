@@ -10,6 +10,12 @@ body {
     transition: color 0.25s, background-color 0.25s;
 }
 
+.playButton {
+    background-color: #333;
+    border: 1px #666 solid;
+    border-radius: 5px;
+}
+
 #wobble {
     font-size: 20pt;
     font-weight: bold;

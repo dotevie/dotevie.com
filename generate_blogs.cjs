@@ -20,9 +20,9 @@ function manualDateParse(date) {
         'october', 'november', 'december'
     ][month];
     const dayEnd =
-        day == 1 ? "st" :
-        day == 2 ? "nd" :
-        day == 3 ? "rd" :
+        day % 10 == 1 ? "st" :
+        day % 10 == 2 ? "nd" :
+        day % 10 == 3 ? "rd" :
         "th";
     return realMonth + " " + day + dayEnd + ", " + year;
 }
@@ -31,10 +31,10 @@ function manualDateParse(date) {
     const htmlTemplate = `<!DOCTYPE html>
 <html>
     <head>
-        <title>{{TITLE}} - sayofthelor.us</title>
+        <title>{{TITLE}} - dotevie.com</title>
         <link rel="stylesheet" href="../global.css" type="text/css" />
-        <meta name="description" content="Website for sayofthelor">
-        <meta name="author" content="sayofthelor">
+        <meta name="description" content="Website for dotevie">
+        <meta name="author" content="dotevie">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="../wobble.js"></script>
     </head>
@@ -52,10 +52,10 @@ function manualDateParse(date) {
     const htmlTemplate2 =  `<!DOCTYPE html>
 <html>
     <head>
-        <title>blog posts - sayofthelor.us</title>
+        <title>blog posts - dotevie.com</title>
         <link rel="stylesheet" href="../global.css" type="text/css" />
-        <meta name="description" content="Website for sayofthelor">
-        <meta name="author" content="sayofthelor">
+        <meta name="description" content="Website for dotevie.com">
+        <meta name="author" content="dotevie">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
     </head>
     <body>
