@@ -5,9 +5,15 @@
 body {
     padding: 15px;
     background-image: url("bg.svg");
-    background-color: light-dark(#d8beff, #1f1f1f);
-    color: light-dark(#000, #eee);
-    transition: color 0.25s, background-color 0.25s;
+    background-color: light-dark(#d8beff, #1f1f1f) !important;
+    color: light-dark(#1f1f1f, #eee) !important;
+    /* 
+        these two **should** fix the site looking all Like Ass on browsers without light-dark
+        can confirm it at least works on basilisk 
+        keep in mind with any wacky inline CSS that we default to light theme!!
+    */
+    background-color: #d8beff;
+    color: #1f1f1f;
 }
 
 .playButton {
@@ -16,10 +22,6 @@ body {
     border-radius: 5px;
 }
 
-#wobble {
-    font-size: 20pt;
-    font-weight: bold;
-}
 p {
     font-size: 16pt;
 }
