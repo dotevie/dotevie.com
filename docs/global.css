@@ -1,0 +1,120 @@
+:root {
+    color-scheme: light dark;
+}
+
+body {
+    padding: 16px;
+    background-image: url("bg.svg");
+    background-attachment: fixed;
+    background-color: light-dark(#dff9e9, #1f1f1f) !important;
+    color: light-dark(#1f1f1f, #eee) !important;
+    /* 
+        these two **should** fix the site looking all Like Ass on browsers without light-dark
+        can confirm it at least works on basilisk 
+        keep in mind with any wacky inline CSS that we default to light theme!!
+    */
+    background-color: #dff9e9;
+    color: #1f1f1f;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: url("bg-dark.svg");
+    }
+}
+
+.playButton {
+    background-color: #333;
+    border: 1px #666 solid;
+    border-radius: 5px;
+}
+
+p {
+    font-size: 16pt;
+}
+
+li {
+    font-size: 16pt;
+    padding: 10px 0;
+}
+
+textarea {
+    resize: none;
+}
+
+#navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#navbar li {
+    display: inline;
+    text-align: center;
+    white-space: nowrap;
+}
+
+#navbar li + li::before {
+    content: " | ";
+
+}
+
+#navbar li a {
+    display:inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+/* yay consistency */
+a, a:visited { 
+    color: light-dark(green, #68a262)!important;
+    color: green;
+}
+
+.date {
+    margin:0;
+    font-size: medium;
+    font-weight: bold;
+    align-self: flex-end;
+    text-align: right;
+    display: flex;
+    position: absolute;
+    right: 24px;
+}
+.date img {
+    float: left;
+    margin: auto;
+}
+
+article {
+    max-width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    background: #1f1f1fcc;
+    background: light-dark(#dff9e9cc, #1f1f1fcc) !important;
+    padding: 0px 12px;
+    border: 2px solid;
+    border-color: #9bd595;
+    border-radius: 12px;
+}
+
+hr {
+    color: #9bd595;
+    border-style:solid;
+}
+
+img {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 772px) {
+    body {
+        padding: 16px 8px;
+    }
+    article {
+        padding: 0px 8px;
+    }
+}

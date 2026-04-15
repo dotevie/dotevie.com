@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>dotevie.com</title>
+        <meta name="description" content="Website for dotevie">
+        <meta name="author" content="dotevie">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="wobble.js"></script>
+        <link rel="alternate" title="blog RSS feed" type="application/atom+xml" href="https://dotevie.com/blogs/feed.atom" />
+        <link rel="stylesheet" href="global.css" type="text/css" />
+        <noscript><style>.needsJS {display: none;}</style></noscript>
+        <script>
+            let done = false;
+            async function doThing() {
+                const thing = await fetch("https://nowplayingapi.dotevie.com");
+                const res = await thing.json();
+                console.log(res);
+                if (!res.success) {
+                    done = true;
+                    document.getElementById("listening").innerHTML = "currently listening to: nothing";
+                    return;
+                }
+                if (res.playing.length < 1) return;
+                let str = "currently listening to: " + res.playing[0].song + " - ";
+                const artists = res.playing[0].artists;
+                for (let i = 0; i < artists.length - 2; i++) {
+                    str += artists[i] + ", "
+                }
+                str += artists[artists.length - 1];
+                document.getElementById("listening").innerHTML = str;
+                done = true;
+            }     
+            setTimeout(() => {
+                if(!done) document.getElementById("listening").innerHTML = "currently listening to: nothing [ api down ]";
+            }, 1500);
+            doThing();
+        </script>
+    </head>
+    <body>
+        <ul id="navbar">
+            <li><a href="/">home</a></li>
+            <li><a href="blogs/">blog</a></li>
+        </ul>
+        <h1><div id="wobble">dotevie.com</div></h1>
+        <hr />
+        <noscript>
+            <h3>note:</h3>
+            <p2>your browser has javascript disabled</p>
+            <p2>this <strong>shouldn't</strong> break anything, but if it does, please open a github issue!!</p>
+            <hr />
+        </noscript>
+        <p>it/they</p>
+        <p id="listening" class="needsJS">currently listening to: (fetching)</p>
+        <p>still not entirely sure what to put here, but in the meantime heres some cool stuff i've made:</p>
+        <ul>
+            <li><a href="http://github.com/dotevie/flixel-screenshot-plugin">a haxeflixel screenshot plugin (LGPL)</a></li>
+            <li><a href="https://sayofthelor.itch.io/msmp">monkey see monkey press (KSU fall game jam 2024 submission, GPL)</a></li>
+            <li><a href="http://github.com/dotevie/moo">moo (the best haxe library ever, LGPL)</a></li>
+        </ul>
+        <!-- <p><strong>this website is open source!</strong> if you like, give the code a look <a href="http://github.com/dotevie/dotevie.com">here</a> and feel free to make a pull request!</p> -->
+        <hr />
+        <div style="text-align: center;">
+            <img src="under_construction.gif" width="300px" alt="Under construction banner"/> <br />
+        </div>
+        <hr />
+
+        <p>background from <a href="https://heropatterns.com/">heropatterns.com</a></p>
+        <p>badges from <a href="https://cyber.dabamos.de/88x31/">cyber.dabamos.de</a>, <a href="https://www.pillowfort.social/posts/1632320">dimethylhydra at pillowfort.social</a>, <a href="https://capstasher.neocities.org/88x31collection-page1">capstasher.neocities.org</a>, and me!!</p>
+        <img src="badges/transnow2.gif" width="88" height="31" alt="trans rights now button"/>
+        <img src="badges/800x600.gif" width="88" height="31" alt="best viewed in 800x600 button"/>
+        <img src="badges/srgb-now.gif" width="88" height="31" alt="best viewed in sRGB buttom"/>
+        <img src="badges/javascript.gif" width="88" height="31" alt="JavaScript Now! button"/>
+        <a href="https://sayofthelor.newgrounds.com/"><img src="badges/newgrounds.gif" width="88" height="31" alt="Newgrounds badge"/></a>
+        <img src="badges/trans.png" width="88" height="31" alt="Transgender flag"/>
+        <img src="badges/kromer.gif" width="88" height="31" alt="Animated GIF featuring Spamton from Deltarune and the word KROMER"/>
+        <a href="https://fedoraproject.org"><img src="badges/fedora2.gif" width="88" height="31" alt="Powered by Fedora button"/></a>
+        <!-- <a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="badges/gplv3.gif" width="88" height="31" alt="GNU GPL v3 button"/></a> -->
+        <a href="https://vscodium.com/"><img src="badges/codium.png" width="88" height="31" alt="Made with VSCodium button"/></a>
+        <a href="https://archive.org/"><img src="badges/internetarchive.gif" width="88" height="31" alt="Internet Archive button"/></a>
+        <img src="badges/keep.gif" width="88" height="31" alt="Animated button cycling between 'SAY NO TO WEB3' and 'KEEP THE WEB Free'"/>
+
+        <hr />
+    </body>
+</html>

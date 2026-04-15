@@ -1,0 +1,3 @@
+I'm currently working on a new product I think is pretty neat. It's called the **zeromaster**, and it's an RP2040-powered USB plastic guitar adapter utilizing [Santroller](http://santroller.tangentmc.net). I'm making a few design decisions, in addition to running a general interest check to see how many I should be preparing to make. If you're interested in using a PDP riffmaster on the opposite platform or using other plastic controllers on Mac and PC, please fill this out!
+
+## click [here](https://forms.gle/Jchz5CvuzXxCuv2z7)!
