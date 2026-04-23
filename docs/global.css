@@ -82,7 +82,7 @@ a, a:visited {
     position: absolute;
     right: 24px;
 }
-.date img {
+.date img { 
     float: left;
     margin: auto;
 }
@@ -98,10 +98,24 @@ article {
     border-color: #9bd595;
     border-radius: 12px;
 }
+article img {
+    max-width: 750px;
+    width: 100%;
+}
+
+article code {
+    color: #9bd595;
+}
 
 hr {
     color: #9bd595;
     border-style:solid;
+}
+
+.indicator {
+    color: light-dark(green, #68a262)!important;
+    color: green;
+    font-weight: bolder;
 }
 
 img {
