@@ -21,6 +21,7 @@
                     return;
                 }
                 if (res.playing.length < 1) return;
+                if (res.playing[0].user != "evelyn") return;
                 let str = "currently listening to: " + res.playing[0].song + " - ";
                 const artists = res.playing[0].artists;
                 for (let i = 0; i < artists.length - 2; i++) {
@@ -51,7 +52,7 @@
         </noscript>
 
         <p>it/they</p>
-        <!-- <p id="listening" class="needsJS">currently listening to: (fetching)</p> -->
+        <p id="listening" class="needsJS">currently listening to: (fetching)</p>
         <p>still not entirely sure what to put here, but in the meantime heres some cool stuff i've made:</p>
         <ul>
             <li><a href="http://github.com/dotevie/lore-engine-legacy">lore engine, an FNF thing (GPL)</a></li>
