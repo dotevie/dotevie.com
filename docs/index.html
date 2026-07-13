@@ -15,13 +15,11 @@
                 const thing = await fetch("https://nowplayingapi.dotevie.com");
                 const res = await thing.json();
                 console.log(res);
-                if (!res.success) {
+                if (!res.success || res.playing.length < 1 || res.playing[0].user != "evelyn") {
                     done = true;
                     document.getElementById("listening").innerHTML = "currently listening to: nothing";
                     return;
                 }
-                if (res.playing.length < 1) return;
-                if (res.playing[0].user != "evelyn") return;
                 let str = "currently listening to: " + res.playing[0].song + " - ";
                 const artists = res.playing[0].artists;
                 for (let i = 0; i < artists.length - 2; i++) {
