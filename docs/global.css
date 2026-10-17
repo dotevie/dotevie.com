@@ -8,9 +8,9 @@ body {
     background-attachment: fixed;
     background-color: light-dark(#dff9e9, #1f1f1f) !important;
     color: light-dark(#1f1f1f, #eee) !important;
-    /* 
+    /*
         these two **should** fix the site looking all Like Ass on browsers without light-dark
-        can confirm it at least works on basilisk 
+        can confirm it at least works on basilisk
         keep in mind with any wacky inline CSS that we default to light theme!!
     */
     background-color: #dff9e9;
@@ -67,7 +67,7 @@ textarea {
 }
 
 /* yay consistency */
-a, a:visited { 
+a, a:visited {
     color: light-dark(green, #68a262)!important;
     color: green;
 }
@@ -82,10 +82,16 @@ a, a:visited {
     position: absolute;
     right: 24px;
 }
-.date img { 
+.date img {
     float: left;
     margin: auto;
+    border-radius: 4px;
+    outline: 2px solid #fff;
+    outline-offset: -2px;
+    box-sizing: border-box;
+    padding: 2px;
 }
+
 
 article {
     max-width: 750px;

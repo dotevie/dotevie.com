@@ -14,7 +14,7 @@ function manualDateParse(dateRaw) {
     const year = parseInt(list[0]);
     const month = parseInt(list[1]);
     const day = parseInt(list[2]);
-    const realMonth = ['', 
+    const realMonth = ['',
         'january', 'february', 'march',
         'april', 'may', 'june',
         'july', 'august', 'september',
@@ -66,7 +66,7 @@ function manualDateParse(dateRaw) {
             <li><a href="/index.html">home</a></li>
             <li><a href="/blogs/index.html">blog</a></li>
         </ul>
-        <div style="display: flex; justify-content: space-between; padding:0;"><h1>blog posts</h1> <p class="date"><a href="https://dotevie.com/blogs/feed.atom"><img src="../rss.svg" height="24px" alt="RSS logo"/></a></p></div>
+        <div style="display: flex; justify-content: space-between; padding:0;"><h1>blog posts</h1> <p class="date"><a href="https://dotevie.com/blogs/feed.atom"><img src="../rss.svg" title="Right click this icon to copy the RSS feed URL and save it in the reader of your choice." height="20px" alt="RSS logo"/></a></p></div>
         <hr />
         <ul>{{SLOT}}
         </ul>
@@ -154,11 +154,11 @@ function manualDateParse(dateRaw) {
             .replaceAll("{{URL}}", formattedUrl)
             .replace("{{SLOT}}", `\t\t\t<div xmlns="http://www.w3.org/1999/xhtml">
                 ${formattedHtml.replaceAll("\t\t", "\t\t\t\t").replaceAll("{{BLOG_URL}}", "https://dotevie.com/blogs")}
-            </div>`); 
+            </div>`);
         fs.writeFileSync(`docs/blogs/${pth}.html`, htmlTemplate.replace("{{TITLE}}", formattedTitle) // strip tags
             .replace("{{HEADER}}",`<div style="display: flex; justify-content: space-between; padding:0;">
             <h1>${name}</h1>`
-            + (date ? `    <p class="date">${date} | <a href="https://dotevie.com/blogs/feed.atom"><img src="../rss.svg" height="24px" alt="RSS logo"/></a></p>` : "")
+            + (date ? `    <p class="date">${date} | &nbsp;<a href="https://dotevie.com/blogs/feed.atom"><img src="../rss.svg" height="20px" title="Right click this icon to copy the RSS feed URL and save it in the reader of your choice." style="position: relative; top: 2px;" alt="RSS logo"/></a></p>` : "")
             + "\t\t</div><hr />")
             .replace("{{SLOT}}", formattedHtml.replaceAll("{{BLOG_URL}}", "."))
         );

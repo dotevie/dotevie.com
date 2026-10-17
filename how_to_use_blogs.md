@@ -21,10 +21,10 @@
 |   ├── source/
 |   |   ├── order.meta
 |   │   ├── name.md
-|   │   └── name.meta
+|   └── └── name.meta
 └── docs/
     ├── blogs/
     |   ├── index.html
     │   ├── name.html
-    │   └── feed.atom
+    └── └── feed.atom
 ```
